@@ -10,7 +10,6 @@ from dotenv import load_dotenv
 
 script_path = os.path.abspath(__file__)
 cwd = os.path.dirname(script_path)
-
 log_directory = os.path.abspath(os.path.join(cwd, "..", "logs"))
 logger = logging.getLogger("ErrorLogging")
 
