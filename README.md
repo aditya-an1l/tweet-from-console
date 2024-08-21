@@ -1,5 +1,5 @@
 # 🐦 Tweet from Console
-> v0.1.0 Text version
+> v0.1.0 Pre-Release Text version
 
 ## 💡 Send tweets right from your terminal! No browser needed!
 
