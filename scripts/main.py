@@ -8,9 +8,12 @@ import os
 import sys
 from dotenv import load_dotenv
 
-cwd = os.getcwd()
+script_path = os.path.abspath(__file__)
+cwd = os.path.dirname(script_path)
+
 log_directory = os.path.abspath(os.path.join(cwd, "..", "logs"))
 logger = logging.getLogger("ErrorLogging")
+
 console = Console()
 
 try:
@@ -67,7 +70,7 @@ def check_api_keys(keys):
 def send_tweet(tweet):
     """Send the Tweet"""
     tweet = tweet
-    console.print(f'You sure you want to post "[cyan]{tweet}[/cyan]?"  ')
+    console.print(f'You sure you want to post "[cyan]{tweet}[/cyan]" ?  ')
     console.print("[green] [ (Y)es / (N)o ] : [/green] ")
     confirmation = input("Type Here: ")
     if confirmation in ("Y", "y", "yes", "Yes", "NO"):
