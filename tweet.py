@@ -20,8 +20,10 @@ import sys
 
 sys.path.append("/scripts")
 from scripts import main
+import tweepy
 
-if __name__ == "__main__":
+
+def send_tweet():
     try:
         tweet = sys.argv[1]
     except IndexError:
@@ -40,3 +42,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     main.send_tweet(tweet)
+
+
+if __name__ == "__main__":
+    send_tweet()
