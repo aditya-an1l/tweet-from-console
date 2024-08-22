@@ -1,21 +1,18 @@
 # 🐦 Tweet from Console
-> v0.1.0 Pre-Release Text version
+
+> v1.0.0 Text Tweet Version
 
 ## 💡 Send tweets right from your terminal! No browser needed!
 
+Tweet from Console is a Python-based command-line tool that lets you tweet directly from your console, command prompt, or terminal. Say goodbye to distracting web interfaces.
 
-
-Tweet from Console is a Python-based command-line tool that lets you tweet directly from your console, command prompt, or terminal. Say goodbye to distracting web interfaces. 
-
-Good for programmers and devs who wants to send a tweets without leaving their console. 
-
+Good for programmers and devs who wants to send a tweets without leaving their console.
 
 ## ✨ Features
 
 - 📝 Send text-based tweets from the command line
-- ⏲️  Fast, simple and straight-forward
+- ⏲️ Fast, simple and straight-forward
 - 🔑 Secure integration with Twitter API
-
 
 ## 🛠️ Prerequisites
 
@@ -25,18 +22,21 @@ Good for programmers and devs who wants to send a tweets without leaving their c
 ## 🚀 Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/yourusername/tweet-from-console.git
    cd tweet-from-console
    ```
 
 2. Create and activate a virtual environment:
+
    ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
    ```
 
 3. Install the required dependencies:
+
    ```bash
    pip install -r requirements.txt
    ```
@@ -61,10 +61,8 @@ TWITTER_ACCESS_TOKEN_SECRET=your_access_token_secret
 To send a tweet, run this command from the project root:
 
 ```bash
-python scripts/main.py "Your awesome tweet goes here! "
+python tweet.py "Your awesome tweet goes here! "
 ```
-
->NOTE: Better code execution mechanism under development 🚩
 
 ## 🤝 Contributing
 
