@@ -76,11 +76,11 @@ def send_tweet(tweet):
     console.print(f'You sure you want to post "[cyan]{tweet}[/cyan]" ?  ')
     console.print("[green] [ (Y)es / (N)o ] : [/green] ")
     confirmation = input("Type Here: ")
-    if confirmation in ("Y", "y", "yes", "YES", "Yes"):
+    if confirmation.strip() in ("Y", "y", "yes", "YES", "Yes"):
         client.create_tweet(text=tweet)
         tweet_confirmation_alert(tweet, tweet_log=True)
         sys.exit(1)
-    elif confirmation in ("N", "n", "no", "NO", "No"):
+    elif confirmation.strip() in ("N", "n", "no", "NO", "No"):
         print("Exiting...")
         sys.exit(1)
     else:
@@ -118,7 +118,3 @@ def authentication():
         access_token=access_token,
         access_token_secret=access_token_secret,
     )
-
-
-if __name__ == "__main__":
-    send_tweet(tweet)
