@@ -1,8 +1,38 @@
-# 🐦 Tweet from Console
+<div align="center">
+  <img src="media/logo.jfif" width="200" height="200" alt="Logo">
+<p style="font-size: 20px; font-family: 'VT323', monospace;"><b>Tweet - From - Console</b></p>
+</div>
 
-> v1.0.0 Text Tweet Version
+<hr>
 
-## 💡 Send tweets right from your terminal! No browser needed!
+<div align="center"><p>
+    <a href="https://github.com/aditya-an1l/tweet-from-console/releases/latest">
+      <img alt="Latest release" src="https://img.shields.io/github/v/release/aditya-an1l/tweet-from-console?style=for-the-badge&logo=github&color=1DA1F2&logoColor=FFFFFF&labelColor=000000&include_prerelease&sort=semver" />
+    </a>
+    <a href="https://github.com/aditya-an1l/tweet-from-console/pulse">
+      <img alt="Last commit" src="https://img.shields.io/github/last-commit/aditya-an1l/tweet-from-console?style=for-the-badge&logo=git&color=1DA1F2&logoColor=FFFFFF&labelColor=000000"/>
+    </a>
+    <a href="https://github.com/aditya-an1l/tweet-from-console/blob/main/LICENSE">
+      <img alt="License" src="https://img.shields.io/github/license/aditya-an1l/tweet-from-console?style=for-the-badge&logo=apache&color=FF4136&logoColor=FFFFFF&labelColor=000000" />
+    </a>
+    <a href="https://github.com/aditya-an1l/tweet-from-console/stargazers">
+      <img alt="Stars" src="https://img.shields.io/github/stars/aditya-an1l/tweet-from-console?style=for-the-badge&logo=starship&color=1DA1F2&logoColor=FFFFFF&labelColor=000000" />
+    </a>
+    <a href="https://github.com/aditya-an1l/tweet-from-console/issues">
+      <img alt="Issues" src="https://img.shields.io/github/issues/aditya-an1l/tweet-from-console?style=for-the-badge&logo=gitbook&color=FF4136&logoColor=FFFFFF&labelColor=000000" />
+    </a>
+    <a href="https://github.com/aditya-an1l/tweet-from-console">
+      <img alt="Repo Size" src="https://img.shields.io/github/repo-size/aditya-an1l/tweet-from-console?color=1DA1F2&label=SIZE&logo=files&style=for-the-badge&logoColor=FFFFFF&labelColor=000000" />
+    </a>
+    <a href="https://twitter.com/intent/follow?screen_name=its_aditya_an1l">
+      <img alt="follow on X" src="https://img.shields.io/twitter/follow/its_aditya_an1l?style=for-the-badge&logo=x&color=1DA1F2&logoColor=FFFFFF&labelColor=000000" />
+    </a>
+</div>
+
+<div align="center">
+<p style="font-size: 25px; font-family: 'VT323', monospace;">
+Send tweets right from your terminal! No browser needed!</p>
+</div>
 
 Tweet from Console is a Python-based command-line tool that lets you tweet directly from your console, command prompt, or terminal. Say goodbye to distracting web interfaces.
 
