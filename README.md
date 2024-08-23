@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="media/logo.jfif" width="200" height="200" alt="Logo">
+  <img src="https://raw.githubusercontent.com/aditya-an1l/tweet-from-console/main/media/Logo.jfif" width="200" height="200" alt="Logo">
 <p style="font-size: 20px; font-family: 'VT323', monospace;"><b>Tweet - From - Console</b></p>
 </div>
 
