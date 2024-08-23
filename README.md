@@ -1,9 +1,7 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/aditya-an1l/tweet-from-console/main/media/Logo.jfif" width="200" height="200" alt="Logo">
-<p style="font-size: 20px; font-family: 'VT323', monospace;"><b>Tweet - From - Console</b></p>
+<h1><b>Tweet - From - Console</b></h1>
 </div>
-
-<hr>
 
 <div align="center"><p>
     <a href="https://github.com/aditya-an1l/tweet-from-console/releases/latest">
@@ -28,11 +26,11 @@
       <img alt="follow on X" src="https://img.shields.io/twitter/follow/its_aditya_an1l?style=for-the-badge&logo=x&color=1DA1F2&logoColor=FFFFFF&labelColor=000000" />
     </a>
 </div>
-
+<br> 
 <div align="center">
-<p style="font-size: 25px; font-family: 'VT323', monospace;">
-Send tweets right from your terminal! No browser needed!</p>
+<h2><b> 🐦 Send tweets right from your terminal! No browser needed!</b></h2>
 </div>
+
 
 Tweet from Console is a Python-based command-line tool that lets you tweet directly from your console, command prompt, or terminal. Say goodbye to distracting web interfaces.
 
