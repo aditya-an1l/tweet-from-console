@@ -58,6 +58,10 @@ def tweet_confirmation_alert(tweet, tweet_log=False):
             message = f'\n({datetime.now().strftime("%H:%M:%S %Y-%m-%d")}) {tweet}'
             file.write(message)
             pass
+        console.print(
+            f"\n Log History stored in [cyan]tweet_history.txt[/cyan] in [cyan]{log_directory}[/cyan] \n",
+            justify="center",
+        )
 
 
 def check_api_keys(keys):
