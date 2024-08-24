@@ -42,7 +42,7 @@ def log_error(error_message):
     )
     logger.error(error_message)
     console.print(
-        f"\n Log History stored in [cyan]error.txt[/cyan] in [cyan]{log_directory}[/cyan] \n",
+        f"\n Log History stored in [cyan]error.txt[/cyan] at [cyan]{log_directory}[/cyan] \n",
         justify="center",
     )
 
@@ -58,7 +58,7 @@ def tweet_confirmation_alert(tweet, tweet_log=False):
             file.write(message)
             pass
         console.print(
-            f"\n Log History stored in [cyan]tweet_history.txt[/cyan] in [cyan]{log_directory}[/cyan] \n",
+            f"\n Tweet History stored in [cyan]tweet_history.txt[/cyan] at [cyan]{log_directory}[/cyan] \n",
             justify="center",
         )
 
