@@ -29,7 +29,6 @@ def send_tweet():
     except IndexError:
         main.log_error(
             'Error: No tweet text provided. Make sure the command is in the following format: \n \n $ python tweet.py "tweet goes there"  '
-            'Error: No tweet text provided. Make sure the command is in the following format: \n \n $ tweet.py "tweet goes there"  '
         )
         sys.exit(1)
     except TypeError:
