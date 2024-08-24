@@ -28,9 +28,8 @@
 </div>
 <br> 
 <div align="center">
-<h2><b> 🐦 Send tweets right from your terminal! No browser needed!</b></h2>
+<h2><b> 🐦 Send tweets right from your terminal. No browser needed!</b></h2>
 </div>
-
 
 Tweet from Console is a Python-based command-line tool that lets you tweet directly from your console, command prompt, or terminal. Say goodbye to distracting web interfaces.
 
@@ -39,6 +38,21 @@ Good for programmers and devs who wants to send a tweets without leaving their c
 ## 🎞️ Preview
 
 ![Preview-GIF](https://github.com/aditya-an1l/tweet-from-console/blob/main/media/Walkthrough.gif)
+
+<details>
+<summary><h2>TOC</h2></summary>
+
+- [🎞️ Preview](#-preview)
+- [✨ Features](#-features)
+- [🛠️ Prerequisites](#-prerequisites)
+- [🚀 Installation](#-installation)
+- [⚙️ Configuration](#-configuration)
+- [🎮 Usage](#-usage)
+  - [Tweet with confirmation](#tweet-with-confirmation)
+  - [Tweet without confirmation](#tweet-without-confirmation)
+- [🤝 Contributing](#-contributing)
+- [⚠️ Disclaimer](#-disclaimer)
+</details>
 
 ## ✨ Features
 
@@ -90,11 +104,34 @@ TWITTER_ACCESS_TOKEN_SECRET=your_access_token_secret
 
 ## 🎮 Usage
 
+### Tweet with confirmation
+
 To send a tweet, run this command from the project root:
 
 ```bash
 python tweet.py "Your awesome tweet goes here! "
 ```
+
+This will give you a confirmation message like the following:
+
+```
+You sure you want to post "Your awesome tweet goes here!" ?
+ [ (Y)es / (N)o ] :
+
+Type Here:
+```
+
+And based on your choice the scripts send your tweet.
+
+### Tweet without confirmation
+
+If you want to send the tweet without confirmation, add `--` as an argument.
+
+```bash
+python tweet.py "Your awesome tweet goes here! " --
+```
+
+This would not ask the confirmation message. It directly sends your tweet.
 
 ## 🤝 Contributing
 
