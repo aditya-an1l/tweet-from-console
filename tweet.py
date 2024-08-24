@@ -41,7 +41,7 @@ def send_tweet():
         main.log_error(f"Error: {ve}")
         sys.exit(1)
 
-    main.send_tweet(tweet)
+    main.send_tweet(tweet, sys.argv)
 
 
 if __name__ == "__main__":
