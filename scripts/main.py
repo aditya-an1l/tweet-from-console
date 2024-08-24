@@ -107,20 +107,23 @@ def authentication():
     return client
 
 
-def send_tweet(tweet):
+def send_tweet(tweet, arg):
     """Send the Tweet"""
     client = authentication()
     tweet = tweet
-    console.print(f'You sure you want to post "[cyan]{tweet}[/cyan]" ?  ')
-    console.print("[green] [ (Y)es / (N)o ] : [/green] ")
-    confirmation = input("Type Here: ")
-    if confirmation.strip() in ("Y", "y", "yes", "YES", "Yes"):
+    if arg[2] == "--":
         client.create_tweet(text=tweet)
-        tweet_confirmation_alert(tweet, tweet_log=True)
-        sys.exit(1)
-    elif confirmation.strip() in ("N", "n", "no", "NO", "No"):
-        print("Exiting...")
-        sys.exit(1)
     else:
-        print("[red]Invalid Input [/red]")
-        send_tweet(tweet)
+        console.print(f'You sure you want to post "[cyan]{tweet}[/cyan]" ?  ')
+        console.print("[green] [ (Y)es / (N)o ] : [/green] ")
+        confirmation = input("Type Here: ")
+        if confirmation.strip() in ("Y", "y", "yes", "YES", "Yes"):
+            client.create_tweet(text=tweet)
+            tweet_confirmation_alert(tweet, tweet_log=True)
+            sys.exit(1)
+        elif confirmation.strip() in ("N", "n", "no", "NO", "No"):
+            print("Exiting...")
+            sys.exit(1)
+        else:
+            print("[red]Invalid Input [/red]")
+            send_tweet(tweet)
