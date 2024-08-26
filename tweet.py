@@ -3,7 +3,7 @@ Tweet-from-console
 
 URL: https://github.com/aditya-an1l/Tweet-from-console
 Author: aditya-an1l (https://github.com/aditya-an1l)
-Version: v1.0.2
+Version: v1.1.1
 Release Name: Argument Support Version
 Licence: Apache 2.0 Licence
 
@@ -31,7 +31,7 @@ from rich.console import Console
 
 import argparse
 
-VERSION = "v1.0.2"
+VERSION = "v1.1.1"
 RELEASE_TITLE = "Argument Support Version"
 
 console = Console()
