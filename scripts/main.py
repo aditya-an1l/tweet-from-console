@@ -106,18 +106,15 @@ def authentication():
     return client
 
 
-def send_tweet(tweet, arg):
+def send_tweet(tweet, skip_confirmation=False):
     """Send the Tweet"""
     client = authentication()
     tweet = tweet
-    arg = arg
-
-    skip_confirmation = ["--"] in arg
 
     if skip_confirmation:
         client.create_tweet(text=tweet)
     else:
-        console.print(f'You sure you want to post "[cyan]{tweet}[/cyan]" ?  ')
+        console.print(f"You sure you want to post : [cyan]{tweet}[/cyan] ?  ")
         console.print("[green] [ (Y)es / (N)o ] : [/green] ")
         confirmation = input("Type Here: ")
         if confirmation.strip() in ("Y", "y", "yes", "YES", "Yes"):
@@ -129,4 +126,3 @@ def send_tweet(tweet, arg):
             sys.exit(1)
         else:
             print("\n [red]Invalid Input [/red] \n")
-            send_tweet(tweet, arg)
