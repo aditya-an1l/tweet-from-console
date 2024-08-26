@@ -26,7 +26,6 @@ import os
 
 sys.path.append("/scripts")
 from scripts import main
-import tweepy
 from rich import print
 from rich.console import Console
 
