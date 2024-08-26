@@ -125,4 +125,3 @@ def send_tweet(tweet, skip_confirmation=False):
             sys.exit(1)
         else:
             print("\n [red]Invalid Input [/red] \n")
-            send_tweet(tweet, arg)
