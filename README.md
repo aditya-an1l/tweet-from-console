@@ -47,11 +47,15 @@ Good for programmers and devs who wants to send a tweets without leaving their c
 - [🛠️ Prerequisites](#-prerequisites)
 - [🚀 Installation](#-installation)
 - [⚙️ Configuration](#-configuration)
+  - [How to get the API keys?](#how-to-get-the-api-keys)
 - [🎮 Usage](#-usage)
-  - [Tweet with confirmation](#tweet-with-confirmation)
-  - [Tweet without confirmation](#tweet-without-confirmation)
+  - [1. Tweet with Confirmation Message ✅](#1-tweet-with-confirmation-message-)
+  - [2. Tweet without Confirmation Message ❎](#2-tweet-without-confirmation-message-)
+  - [3. View Tweet History 📄](#3-view-tweet-history-)
+  - [4. View Error Logs 📃](#4-view-error-logs-)
 - [🤝 Contributing](#-contributing)
 - [⚠️ Disclaimer](#-disclaimer)
+
 </details>
 
 ## ✨ Features
@@ -78,7 +82,7 @@ Good for programmers and devs who wants to send a tweets without leaving their c
 
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+   source venv/bin/activate  # On Windows, use `venv\Script\activate`
    ```
 
 3. Install the required dependencies:
@@ -91,7 +95,7 @@ Good for programmers and devs who wants to send a tweets without leaving their c
    - Rename `scripts/.env.example` to `scripts/.env`
    - Open `scripts/.env` and fill in your Twitter API credentials
 
-## ⚙️ Configuration
+### ⚙️ API key configuration guide
 
 Ensure your `scripts/.env` file contains these Twitter API credentials:
 
@@ -102,9 +106,24 @@ TWITTER_ACCESS_TOKEN=your_access_token
 TWITTER_ACCESS_TOKEN_SECRET=your_access_token_secret
 ```
 
+#### How to get the API keys?
+
+Following guides would help you get the API keys from _Twitter/X Developers Platform_
+
+- Official Docs : https://developer.x.com/en/docs/authentication/oauth-1-0a/api-key-and-secret
+- TintUP Documentation : https://support.tintup.com/hc/en-us/articles/16130285332371-How-to-setup-the-X-API-Key#h_01GZ16761H8YH0M8680FH7KYS0
+  - Just follow till the _How to setup the X Integration with TINT_ part
+
+You would need the following credentials in your `.env` file
+
+- API Key
+- API Secret Key
+- Access Token
+- Access Token Secret
+
 ## 🎮 Usage
 
-### Tweet with confirmation
+### 1. Tweet with Confirmation Message ✅
 
 To send a tweet, run this command from the project root:
 
@@ -123,15 +142,71 @@ Type Here:
 
 And based on your choice the scripts send your tweet.
 
-### Tweet without confirmation
+### 2. Tweet without Confirmation Message ❎
 
-If you want to send the tweet without confirmation, add `--` as an argument.
+If you want to send the tweet without confirmation, add `--` (or `-y`) as an argument.
 
 ```bash
 python tweet.py "Your awesome tweet goes here! " --
 ```
 
-This would not ask the confirmation message. It directly sends your tweet.
+This would not ask the confirmation message. It directly post your tweet.
+
+### 3. View Tweet History 📄
+
+You can now view the tweet history with the following command:
+
+```bash
+python tweet.py -th <num>
+```
+
+or
+
+```bash
+python tweet.py --tweethistory <num>
+```
+
+Where `<num>` is the number of recent items to display. For example, if we want to see the recent 5 tweets sent using the script, we can run `python tweet.py -th 5` (or `python tweet.py -tweethistory 5` ). If no `<num>` is mentioned, the script will retrieve first 500 tweet history and display on the screen.
+
+The error logs are located at `logs/tweet_history.txt` inside the repo
+
+### 4. View Error Logs 📃
+
+Since this is a CLI tools, there is always a possiblity for errors depending on the client environment.
+
+Therefore, the errors (if any) faced by this application is automatically logged in your local machine.
+
+To view it, run:
+
+```bash
+python tweet.py -e <num>
+```
+
+or
+
+```bash
+python tweet.py --error <num>
+```
+
+Where `<num>` is the number of recent items to display. For example, if we want to see the recent 5 error messages, we can run `python tweet.py -e 5` (or `python tweet.py --error 5` ). If no `<num>` is mentioned, the script will retrieve first 500 error logs and display on the screen.
+
+The error logs are located at `logs/error.txt` inside the repo
+
+### 4. (Misc) View All Logs 📃
+
+You can view both the above logs at the same time using the following commands:
+
+```bash
+python tweet.py -a <num>
+```
+
+or
+
+```bash
+python tweet.py --all <num>
+```
+
+The error logs are located at `logs/error.txt` inside the repo
 
 ## 🤝 Contributing
 
