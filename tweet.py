@@ -23,6 +23,7 @@ $ python tweet.py -h
 
 import sys
 import os
+from typing import Dict
 
 import scripts.main as main
 from rich import print
@@ -38,7 +39,8 @@ cwd = os.path.dirname(script_path)
 log_directory = os.path.abspath(os.path.join(cwd, "logs"))
 
 
-def info():
+def info() -> Dict[str, str]:
+    """Returns dictionary about metadata"""
     info = GitHub_Release()
 
     VERSION = info.get("version")
@@ -59,7 +61,8 @@ def info():
     return info_dict
 
 
-def info_table():
+def info_table() -> None:
+    """Prints the metadata in a table form"""
     console = Console()
     data = info()
     table = Table(title="Tweet From Console")
