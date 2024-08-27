@@ -1,0 +1,24 @@
+{
+  "name": "tweet-from-console",
+  "version": "1.1.1",
+  "release title": "Argument Support Version",
+  "description": "A brief description of your repository",
+  "url": "https://github.com/aditya-an1l/tweet-from-console",
+  "author": {
+    "name": "Aditya An1l",
+    "email": "aditya.anil.productions@gmail.com",
+    "url": "https://dev.to/aditya_an1l"
+  },
+  "license": "Apache-2.0 Licence",
+  "keywords": [
+    "python",
+    "cli",
+    "twitter",
+    "twitter-api",
+    "python3",
+    "cli-app",
+    "tweet"
+  ],
+  "homepage": "https://github.com/aditya-an1l/tweet-from-console",
+  "dependencies": "https://github.com/aditya-an1l/tweet-from-console/blob/main/requirements.txt"
+}
