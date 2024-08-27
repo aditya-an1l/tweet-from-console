@@ -33,7 +33,7 @@ logging.basicConfig(
 )
 
 
-def log_error(error_message):
+def log_error(error_message) -> None:
     """logs the error message in a file"""
 
     console.log(error_message)
@@ -47,7 +47,7 @@ def log_error(error_message):
     )
 
 
-def tweet_confirmation_alert(tweet, tweet_log=False):
+def tweet_confirmation_alert(tweet, tweet_log=False) -> None:
     """Returns the just sent tweet in console"""
 
     confirmation_text = f'The tweet [cyan]{tweet}[/cyan] posted at {datetime.now().strftime("%H:%M:%S %Y-%m-%d")}'
@@ -63,7 +63,7 @@ def tweet_confirmation_alert(tweet, tweet_log=False):
         )
 
 
-def check_api_keys(keys):
+def check_api_keys(keys) -> None:
     """check if API keys are missing"""
 
     missing_keys = [key for key, value in keys.items() if not value]
@@ -73,7 +73,7 @@ def check_api_keys(keys):
         raise ValueError(error_message)
 
 
-def authentication():
+def authentication() -> None:
     """Assign and authenticate key"""
     try:
         consumer_key = os.getenv("CONSUMER_KEY")
@@ -105,7 +105,7 @@ def authentication():
     return client
 
 
-def send_tweet(tweet, skip_confirmation=False):
+def send_tweet(tweet, skip_confirmation=False) -> None:
     """Send the Tweet"""
     client = authentication()
     tweet = tweet
