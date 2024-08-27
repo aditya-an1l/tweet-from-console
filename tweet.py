@@ -24,8 +24,7 @@ $ python tweet.py -h
 import sys
 import os
 
-sys.path.append("/scripts")
-from scripts import main
+import scripts.main as main
 from rich import print
 from rich.console import Console
 
