@@ -24,20 +24,52 @@ $ python tweet.py -h
 import sys
 import os
 
-sys.path.append("/scripts")
-from scripts import main
+import scripts.main as main
 from rich import print
 from rich.console import Console
-
+from rich.table import Table
+from scripts.github_release import GitHub_Release
 import argparse
 
-VERSION = "v1.1.1"
-RELEASE_TITLE = "Argument Support Version"
-
 console = Console()
+
 script_path = os.path.abspath(__file__)
 cwd = os.path.dirname(script_path)
 log_directory = os.path.abspath(os.path.join(cwd, "logs"))
+
+
+def info():
+    info = GitHub_Release()
+
+    VERSION = info.get("version")
+    RELEASE_TITLE = info.get("release title")
+    URL = info.get("url")
+    AUTHOR_NAME = info.get("author", "name")
+    AUTHOR_EMAIL = info.get("author", "email")
+    AUTHOR_URL = info.get("author", "url")
+
+    info_dict = {
+        "Version": VERSION,
+        "Release Title": RELEASE_TITLE,
+        "URL": URL,
+        "Author Name": AUTHOR_NAME,
+        "Author Email": AUTHOR_EMAIL,
+        "Author URL": AUTHOR_URL,
+    }
+    return info_dict
+
+
+def info_table():
+    console = Console()
+    data = info()
+    table = Table(title="Tweet From Console")
+    table.add_column("Info", style="cyan", no_wrap=True)
+    table.add_column("Value", style="yellow")
+
+    for key, value in data.items():
+        table.add_row(str(key), str(value))
+
+    console.print(table)
 
 
 def arguments_parser() -> argparse.Namespace:
@@ -115,9 +147,8 @@ if __name__ == "__main__":
         read_log("tweet history", int(items))
 
     if args.version:
-        console.print(
-            f" [cyan]Tweet From Console[/cyan] \n Version: [green]{VERSION}[/green] \n Release Title: [green]{RELEASE_TITLE}[/green] \n Documentation / Readme : [green] https://github.com/aditya-an1l/tweet-from-console/releases/tag/{VERSION} [/green]"
-        )
+        info_table()
+
     if args.error is not None:
         items = args.error
         read_log("error", int(items))
