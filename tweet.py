@@ -114,6 +114,48 @@ def arguments_parser() -> argparse.Namespace:
     return args
 
 
+def get_latest_release() -> Union[Dict[str, str], str]:
+    """Get release info from GitHub API"""
+    response = requests.get(
+        "https://api.github.com/repos/aditya-an1l/Tweet-from-console/releases/latest"
+    )
+    if response.status_code == 200:
+        latest_release = response.json()
+        required_info = {
+            "name": str(latest_release["name"])[6:],
+            "version": latest_release["tag_name"],
+            "publish_date": latest_release["published_at"],
+        }
+    else:
+        required_info = f"Failed to retrieve releases: {response.status_code}"
+    return required_info
+
+
+def version_checker() -> Dict[str, str | bool]:
+    """Compares the latest version with current version"""
+    current_version = info()["Version"]
+    latest_release = get_latest_release()
+    isMismatched = False
+
+    if isinstance(latest_release, dict):
+        latest_version = str(latest_release["version"])[1:]
+        if latest_version != current_version:
+            verdict = f"Your current version of Tweet-from-console ([red]{current_version}[/red]) is not upto date with latest release ([green]{latest_version}[/green])."
+            isMismatched = True
+        else:
+            verdict = f"Upto date. Using latest version {latest_version}"
+            isMismatched = False
+        final_verdict = {"status_message": verdict, "isMismatched": isMismatched}
+    else:
+        return {
+            "status_message": "Couldn't connect with API. Check your interenet connection..",
+            "isMismatched": False,
+        }
+    print(latest_version)
+
+    return final_verdict
+
+
 def read_log(type, items) -> None:
     """Prints the log messages to the console"""
     file_name = type.replace(" ", "_")
@@ -138,7 +180,9 @@ def read_log(type, items) -> None:
 if __name__ == "__main__":
     args = arguments_parser()
     skip_confirmation = False
-
+    version_check = version_checker()
+    if version_check["isMismatched"]:
+        print(version_check["status_message"])
     if args.tweet:
         skip_confirmation = True if "--" in sys.argv or skip_confirmation else False
         main.send_tweet(args.tweet, skip_confirmation)
@@ -151,7 +195,7 @@ if __name__ == "__main__":
 
     if args.version:
         info_table()
-
+        print(version_checker())
     if args.error is not None:
         items = args.error
         read_log("error", int(items))
