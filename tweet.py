@@ -198,7 +198,6 @@ if __name__ == "__main__":
 
     if args.version:
         info_table()
-        print(version_checker())
     if args.error is not None:
         items = args.error
         read_log("error", int(items))
