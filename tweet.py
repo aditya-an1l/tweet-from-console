@@ -151,7 +151,6 @@ def version_checker() -> Dict[str, str | bool]:
             "status_message": "Couldn't connect with API. Check your interenet connection..",
             "isMismatched": False,
         }
-    print(latest_version)
 
     return final_verdict
 
