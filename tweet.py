@@ -23,7 +23,8 @@ $ python tweet.py -h
 
 import sys
 import os
-from typing import Dict
+from typing import Dict, Any, Union
+import requests
 
 import scripts.main as main
 from rich import print
