@@ -40,7 +40,7 @@ cwd = os.path.dirname(script_path)
 log_directory = os.path.abspath(os.path.join(cwd, "logs"))
 
 
-def info() -> Dict[str, str]:
+def info() -> Dict[str, list[Any] | Any]:
     """Returns dictionary about metadata"""
     info = GitHub_Release()
 
