@@ -142,8 +142,7 @@ if __name__ == "__main__":
     skip_confirmation = False
 
     if args.tweet:
-        if "--" in sys.argv or args.skip_confirmation:
-            skip_confirmation = True
+        skip_confirmation = True if "--" in sys.argv or skip_confirmation else False
         main.send_tweet(args.tweet, skip_confirmation)
 
     if args.all:
