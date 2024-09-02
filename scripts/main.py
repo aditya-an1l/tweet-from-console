@@ -112,6 +112,7 @@ def send_tweet(tweet, skip_confirmation=False) -> None:
 
     if skip_confirmation:
         client.create_tweet(text=tweet)
+        tweet_confirmation_alert(tweet, tweet_log=True)
     else:
         console.print(f"You sure you want to post : [cyan]{tweet}[/cyan] ?  ")
         console.print("[green] [ (Y)es / (N)o ] : [/green] ")
