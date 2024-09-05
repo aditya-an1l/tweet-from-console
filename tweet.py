@@ -87,7 +87,7 @@ def arguments_parser() -> argparse.Namespace:
     )
     parser.add_argument(
         "tweet",
-        help='Write the Tweet that needs to be sent. Enclose it within " ". Use " \\n " to have multiline tweets.',
+        help='Write the Tweet that needs to be sent',
         nargs="?",
         type=str,
     )
