@@ -112,7 +112,7 @@ Following guides would help you get the API keys from _Twitter/X Developers Plat
 
 - Official Docs : https://developer.x.com/en/docs/authentication/oauth-1-0a/api-key-and-secret
 - TintUP Documentation : https://support.tintup.com/hc/en-us/articles/16130285332371-How-to-setup-the-X-API-Key#h_01GZ16761H8YH0M8680FH7KYS0
-  - Just follow till the _How to setup the X Integration with TINT_ part
+  - Just follow till the "_How to setup the X Integration with TINT_" part
 
 You would need the following credentials in your `.env` file
 
