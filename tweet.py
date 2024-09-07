@@ -3,9 +3,11 @@ Tweet-from-console
 
 URL: https://github.com/aditya-an1l/Tweet-from-console
 Author: aditya-an1l (https://github.com/aditya-an1l)
+Email: aditya.anil.productions@gmail.com
+
+Licence: Apache 2.0 Licence
 Version: v1.1.1
 Release Name: Argument Support Version
-Licence: Apache 2.0 Licence
 
 In order to run the program, follow the README.md and enter your
 Twitter API Key in a dot env file under scripts directory (instructions
