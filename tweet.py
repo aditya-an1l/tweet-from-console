@@ -89,7 +89,7 @@ def arguments_parser() -> argparse.Namespace:
     )
     parser.add_argument(
         "tweet",
-        help='Write the Tweet that needs to be sent',
+        help="Write the Tweet that needs to be sent",
         nargs="?",
         type=str,
     )
@@ -161,24 +161,26 @@ def version_checker() -> Dict[str, str | bool]:
     return final_verdict
 
 
-def tweet_box() -> str:
-    print(
-        "Enter multiple lines of text (press Ctrl+D to finish on Linux or Ctrl+Z followed by Enter on Windows):"
-    )
-    lines = sys.stdin.readlines()
-    text = "".join(lines)  # Join the list of lines into a single string
-    print(f"You entered: [cyan] {text} [/cyan]")
-    response = input("Send tweet?  [(Y)es, (N)o]: ")
-
-    if response.strip() in ("Y", "y", "yes", "YES", "Yes"):
-        response_text = response
-    elif response.strip() in ("N", "n", "no", "NO", "No"):
-        response_text = None
-    else:
-        print("[red] Invalid Reponse... [/red] \n Retrying \n \n ")
-        with open(os.path.abspath(__file__), "r") as f:
-            exec(f.read())
-    return response_text
+"""code for upcoming feature. Don't delete"""
+# def tweet_box() -> str:
+#     print(
+#         "Enter multiple lines of text (press Ctrl+D to finish on Linux or Ctrl+Z followed by Enter on Windows):"
+#     )
+#     lines = sys.stdin.readlines()
+#     text = "".join(lines)  # Join the list of lines into a single string
+#     print(f"You entered: [cyan] {text} [/cyan]")
+#     response = input("Send tweet?  [(Y)es, (N)o]: ")
+#
+#     if response.strip() in ("Y", "y", "yes", "YES", "Yes"):
+#         response_text = response
+#     elif response.strip() in ("N", "n", "no", "NO", "No"):
+#         response_text = None
+#     else:
+#         print("[red] Invalid Reponse... [/red] \n Retrying \n \n ")
+#         with open(os.path.abspath(__file__), "r") as f:
+#             exec(f.read())
+#     return response_text
+#
 
 
 def read_log(type, items) -> None:
@@ -207,14 +209,11 @@ if __name__ == "__main__":
     skip_confirmation = False
     version_check = version_checker()
     number_of_args = len(sys.argv)
-    if number_of_args == 1:
-        # TODO: Make a script to send the text box text to the `main.send_tweet` dialogue
-        tweet_box()
     if version_check["isMismatched"]:
         print(version_check["status_message"])
     if args.tweet:
         skip_confirmation = True if "--" in sys.argv or skip_confirmation else False
-        main.send_tweet(args.tweet, skip_confirmation)
+        main.send_tweet(str(args.tweet), skip_confirmation)
 
     if args.all:
         items = args.all

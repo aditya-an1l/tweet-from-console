@@ -105,16 +105,24 @@ def authentication() -> None:
     return client
 
 
-def send_tweet(tweet, skip_confirmation=False) -> None:
+def send_tweet(tweet, skip_confirmation=False, max_limit=280) -> None:
     """Send the Tweet"""
     client = authentication()
-    tweet = tweet
-
-    if skip_confirmation:
+    tweet = str(tweet)
+    characters = len(tweet)
+    if characters > max_limit:
+        console.print(
+            f"[red]Character limit passed:[red] You tweet has {characters} characters (max limit is {max_limit})"
+        )
+        console.print("Exiting...")
+        sys.exit(1)
+    if skip_confirmation and characters <= max_limit:
         client.create_tweet(text=tweet)
         tweet_confirmation_alert(tweet, tweet_log=True)
-    else:
-        console.print(f"You sure you want to post : [cyan]{tweet}[/cyan] ?  ")
+    elif not skip_confirmation and characters <= max_limit:
+        console.print(
+            f"You sure you want to post : [cyan]{tweet}[/cyan] ?  \n [ characters used: {characters}/ 280 ]"
+        )
         console.print("[green] [ (Y)es / (N)o ] : [/green] ")
         confirmation = input("Type Here: ")
         if confirmation.strip() in ("Y", "y", "yes", "YES", "Yes"):
