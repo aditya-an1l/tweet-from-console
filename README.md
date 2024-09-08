@@ -1,5 +1,3 @@
-# This is a feature branch. Go here for the main readme : https://github.com/aditya-an1l/tweet-from-console/
-
 <div align="center">
   <img src="https://raw.githubusercontent.com/aditya-an1l/tweet-from-console/main/media/Logo.jfif" width="200" height="200" alt="Logo">
 <h1><b>Tweet - From - Console</b></h1>
@@ -38,9 +36,6 @@ Tweet from Console is a Python-based command-line tool that lets you tweet direc
 Good for programmers and devs who wants to send a tweets without leaving their console.
 
 ## 🎞️ Preview
-
-A short preview of how the code works
-
 ![Preview-GIF](https://github.com/aditya-an1l/tweet-from-console/blob/main/media/Walkthrough.gif)
 
 <details>
