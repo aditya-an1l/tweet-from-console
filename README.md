@@ -39,6 +39,8 @@ Good for programmers and devs who wants to send a tweets without leaving their c
 
 ## 🎞️ Preview
 
+A short preview of how the code works
+
 ![Preview-GIF](https://github.com/aditya-an1l/tweet-from-console/blob/main/media/Walkthrough.gif)
 
 <details>
