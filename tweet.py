@@ -23,6 +23,8 @@ $ python tweet.py -h
 
 """
 
+import re
+
 import sys
 import os
 from typing import Dict, Any, Union
@@ -34,6 +36,11 @@ from rich.console import Console
 from rich.table import Table
 from scripts.github_release import GitHub_Release
 import argparse
+
+
+VERSION = "v1.1.1"
+RELEASE_TITLE = "Argument Support Version"
+
 
 console = Console()
 
@@ -85,7 +92,7 @@ def arguments_parser() -> argparse.Namespace:
     )
     parser.add_argument(
         "tweet",
-        help='Write the Tweet that needs to be sent. Enclose it within " ". Use " \\n " to have multiline tweets.',
+        help="Write the Tweet that needs to be sent",
         nargs="?",
         type=str,
     )
@@ -157,6 +164,8 @@ def version_checker() -> Dict[str, str | bool]:
     return final_verdict
 
 
+
+
 def read_log(type, items) -> None:
     """Prints the log messages to the console"""
     file_name = type.replace(" ", "_")
@@ -182,11 +191,12 @@ if __name__ == "__main__":
     args = arguments_parser()
     skip_confirmation = False
     version_check = version_checker()
+    number_of_args = len(sys.argv)
     if version_check["isMismatched"]:
         print(version_check["status_message"])
     if args.tweet:
         skip_confirmation = True if "--" in sys.argv or skip_confirmation else False
-        main.send_tweet(args.tweet, skip_confirmation)
+        main.send_tweet(str(args.tweet), skip_confirmation)
 
     if args.all:
         items = args.all

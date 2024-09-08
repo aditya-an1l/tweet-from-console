@@ -36,7 +36,6 @@ Tweet from Console is a Python-based command-line tool that lets you tweet direc
 Good for programmers and devs who wants to send a tweets without leaving their console.
 
 ## 🎞️ Preview
-
 ![Preview-GIF](https://github.com/aditya-an1l/tweet-from-console/blob/main/media/Walkthrough.gif)
 
 <details>
