@@ -37,11 +37,6 @@ from rich.table import Table
 from scripts.github_release import GitHub_Release
 import argparse
 
-
-VERSION = "v1.1.1"
-RELEASE_TITLE = "Argument Support Version"
-
-
 console = Console()
 
 script_path = os.path.abspath(__file__)
