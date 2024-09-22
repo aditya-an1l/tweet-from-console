@@ -55,7 +55,9 @@ def tweet_confirmation_alert(tweet, tweet_log=False) -> None:
     console.print(confirmation_text)
     if tweet_log:
         with open("".join(log_directory + "/tweet_history.txt"), "a") as file:
-            message = f'\n({datetime.now().strftime("%H:%M:%S %Y-%m-%d")}) {tweet}'
+            message = (
+                f'\n({datetime.now().strftime("%H:%M:%S %Y-%m-%d")}) {tweet} \n ------'
+            )
             file.write(message)
             pass
         console.print(
@@ -109,7 +111,6 @@ def authentication() -> None:
 def send_tweet(tweet, skip_confirmation=False, max_limit=280) -> None:
     """Send the Tweet"""
     client = authentication()
-    tweet = str(tweet)
     characters = len(tweet)
     if characters > max_limit:
         console.print(
