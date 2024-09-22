@@ -1,4 +1,3 @@
-# WARN: BReaking change...
 """
 Tweet-from-console
 
@@ -207,7 +206,8 @@ if __name__ == "__main__":
         print(tweet_box_input)
         main.send_tweet(tweet_box_input, skip_confirmation)
     if args.tweet:
-        main.send_tweet(str(args.tweet), skip_confirmation)
+        tweet_inline = args.tweet
+        main.send_tweet(tweet_inline.replace("\\n", "\n"), skip_confirmation)
 
     if args.all:
         items = args.all
