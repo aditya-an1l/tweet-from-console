@@ -159,6 +159,18 @@ def version_checker() -> Dict[str, str | bool]:
     return final_verdict
 
 
+def textbox_response(
+    prompt="Enter your text (type ':q' on a new line to finish):\n",
+) -> str:
+    print(prompt)
+    lines = []
+    while True:
+        line = input()
+        if line.strip().lower() == ":q":
+            break
+        lines.append(line)
+    # return "\n".join(lines)
+    return lines
 
 
 def read_log(type, items) -> None:
