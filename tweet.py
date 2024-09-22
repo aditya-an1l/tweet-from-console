@@ -159,6 +159,17 @@ def version_checker() -> Dict[str, str | bool]:
     return final_verdict
 
 
+def textbox_response(
+    prompt="Enter your text (type ':q' on a new line to finish):\n",
+) -> str:
+    print(prompt)
+    lines = []
+    while True:
+        line = input()
+        if line.strip().lower() == ":q":
+            break
+        lines.append(line)
+    return "\n".join(lines)
 
 
 def read_log(type, items) -> None:
@@ -184,14 +195,19 @@ def read_log(type, items) -> None:
 
 if __name__ == "__main__":
     args = arguments_parser()
-    skip_confirmation = False
     version_check = version_checker()
     number_of_args = len(sys.argv)
+    skip_confirmation = True if "--" in sys.argv else False
+
     if version_check["isMismatched"]:
         print(version_check["status_message"])
+    if (number_of_args == 1) or (number_of_args == 2 and skip_confirmation):
+        tweet_box_input = textbox_response()
+        print(tweet_box_input)
+        main.send_tweet(tweet_box_input, skip_confirmation)
     if args.tweet:
-        skip_confirmation = True if "--" in sys.argv or skip_confirmation else False
-        main.send_tweet(str(args.tweet), skip_confirmation)
+        tweet_inline = args.tweet
+        main.send_tweet(tweet_inline.replace("\\n", "\n"), skip_confirmation)
 
     if args.all:
         items = args.all
