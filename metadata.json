@@ -1,8 +1,8 @@
 {
   "name": "tweet-from-console",
-  "version": "1.1.1",
-  "release title": "Argument Support Version",
-  "description": "A brief description of your repository",
+  "version": "1.2.1",
+  "release title": "Text and Metadata Version",
+  "description": "Send tweets right from your terminal",
   "url": "https://github.com/aditya-an1l/tweet-from-console",
   "author": {
     "name": "Aditya An1l",
