@@ -23,7 +23,7 @@
     <a href="https://github.com/aditya-an1l/tweet-from-console">
       <img alt="Repo Size" src="https://img.shields.io/github/repo-size/aditya-an1l/tweet-from-console?color=1DA1F2&label=SIZE&logo=files&style=for-the-badge&logoColor=FFFFFF&labelColor=000000" />
     </a>
-    <a href="https://twitter.com/intent/follow?screen_name=its_aditya_an1l">
+    <a href="https://twitter.com/intent/follow?screen_name=aditya_an1l">
       <img alt="follow on X" src="https://img.shields.io/twitter/follow/its_aditya_an1l?style=for-the-badge&logo=x&color=1DA1F2&logoColor=FFFFFF&labelColor=000000" />
     </a>
   </p>
