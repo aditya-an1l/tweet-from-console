@@ -35,7 +35,7 @@ from typing import Dict, Any, Union
 import requests
 
 import scripts.main as main
-from rich import print
+from rich import color, print
 from rich.console import Console
 from rich.table import Table
 from scripts.github_release import GitHub_Release
@@ -165,7 +165,7 @@ def version_checker() -> Dict[str, str | bool]:
 
 
 def textbox_response(
-    prompt="Enter your text (type ':q' on a new line to finish):\n",
+    prompt="\nEnter your text (type ':q' on a new line to finish, ':e' to Cancel):\n",
 ) -> str:
     print(prompt)
     lines = []
@@ -173,6 +173,9 @@ def textbox_response(
         line = input()
         if line.strip().lower() == ":q":
             break
+        elif line.strip().lower() == ":e":
+            print("Exiting...")
+            sys.exit(1)
         lines.append(line)
     return "\n".join(lines)
 
