@@ -27,15 +27,13 @@ $ python tweet.py -h
 
 """
 
-import re
-
 import sys
 import os
 from typing import Dict, Any, Union
 import requests
 
 import scripts.main as main
-from rich import color, print
+from rich import print
 from rich.console import Console
 from rich.table import Table
 from scripts.github_release import GitHub_Release
