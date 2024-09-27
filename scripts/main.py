@@ -10,7 +10,6 @@ from dotenv import load_dotenv
 
 script_path = os.path.abspath(__file__)
 cwd = os.path.dirname(script_path)
-
 log_directory = os.path.abspath(os.path.join(cwd, "..", "logs"))
 logger = logging.getLogger("ErrorLogging")
 
@@ -76,8 +75,14 @@ def check_api_keys(keys) -> None:
         raise ValueError(error_message)
 
 
-def authentication() -> None:
+def authentication(tweet) -> tweepy.Client:
     """Assign and authenticate key"""
+    if not tweet.strip():
+        console.print(
+            "[red]ERROR: Tweet cannot be empty. It needs texts. Try again...[/red] \n Exiting..."
+        )
+        sys.exit(1)
+
     try:
         consumer_key = os.getenv("CONSUMER_KEY")
         consumer_secret = os.getenv("CONSUMER_SECRET")
@@ -93,6 +98,7 @@ def authentication() -> None:
             }
         )
     except ValueError:
+        print("ERROR: Value error")
         sys.exit(1)
 
     # Authentication
@@ -105,12 +111,13 @@ def authentication() -> None:
         access_token=access_token,
         access_token_secret=access_token_secret,
     )
+
     return client
 
 
 def send_tweet(tweet, skip_confirmation=False, max_limit=280) -> None:
     """Send the Tweet"""
-    client = authentication()
+    client = authentication(tweet)
     characters = len(tweet)
     if characters > max_limit:
         console.print(
