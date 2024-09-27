@@ -6,8 +6,8 @@ Author: aditya-an1l (https://github.com/aditya-an1l)
 Email: aditya.anil.productions@gmail.com
 
 Licence: Apache 2.0 Licence
-Version: v1.1.1
-Release Name: Argument Support Version
+Version: v1.2.1
+Release Name: Text and Metadata Version
 
 In order to run the program, follow the README.md and enter your
 Twitter API Key in a dot env file under scripts directory (instructions
@@ -16,6 +16,10 @@ given in readme)
 To run the program, open your terminal in the current directory and execute
 
 $ python tweet.py "<insert_your_tweet_here>"
+
+For multiline tweet, just execute
+
+$ python tweet.py
 
 Execute the following to get information about other advances options
 
@@ -138,13 +142,14 @@ def get_latest_release() -> Union[Dict[str, str], str]:
 def version_checker() -> Dict[str, str | bool]:
     """Compares the latest version with current version"""
     current_version = info()["Version"]
+    url = info()["URL"]
     latest_release = get_latest_release()
     isMismatched = False
 
     if isinstance(latest_release, dict):
         latest_version = str(latest_release["version"])[1:]
         if latest_version != current_version:
-            verdict = f"Your current version of Tweet-from-console ([red]{current_version}[/red]) is not upto date with latest release ([green]{latest_version}[/green])."
+            verdict = f"Your current version of Tweet-from-console ([red]{current_version}[/red]) is not upto date with latest release ([green]{latest_version}[/green]). Visit [green]{url}/releases/latest[/green] to download the latest release version. \n"
             isMismatched = True
         else:
             verdict = f"Upto date. Using latest version {latest_version}"
