@@ -1,9 +1,10 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/aditya-an1l/tweet-from-console/main/media/Logo.jfif" width="200" height="200" alt="Logo">
-<h1><b>Tweet - From - Console</b></h1>
+  <h1><b>Tweet - From - Console</b></h1>
 </div>
 
-<div align="center"><p>
+<div align="center">
+  <p>
     <a href="https://github.com/aditya-an1l/tweet-from-console/releases/latest">
       <img alt="Latest release" src="https://img.shields.io/github/v/release/aditya-an1l/tweet-from-console?style=for-the-badge&logo=github&color=1DA1F2&logoColor=FFFFFF&labelColor=000000&include_prerelease&sort=semver" />
     </a>
@@ -25,192 +26,140 @@
     <a href="https://twitter.com/intent/follow?screen_name=its_aditya_an1l">
       <img alt="follow on X" src="https://img.shields.io/twitter/follow/its_aditya_an1l?style=for-the-badge&logo=x&color=1DA1F2&logoColor=FFFFFF&labelColor=000000" />
     </a>
+  </p>
 </div>
+
 <br> 
 <div align="center">
-<h2><b> 🐦 Send tweets right from your terminal. No browser needed!</b></h2>
+  <h2><b> 🐦 Send tweets right from your terminal. No browser needed!</b></h2>
 </div>
 
-Tweet from Console is a Python-based command-line tool that lets you tweet directly from your console, command prompt, or terminal. Say goodbye to distracting web interfaces.
+<p>Tweet from Console is a Python-based command-line tool that lets you tweet directly from your console, command prompt, or terminal. Say goodbye to distracting web interfaces.</p>
 
-Good for programmers and devs who wants to send a tweets without leaving their console.
+<p>Good for programmers and devs who want to send tweets without leaving their console.</p>
 
-## 🎞️ Preview
-![Preview-GIF](https://github.com/aditya-an1l/tweet-from-console/blob/main/media/Walkthrough.gif)
+<h2 id="preview">🎞️ Preview</h2>
+<img src="https://github.com/aditya-an1l/tweet-from-console/blob/main/media/Walkthrough.gif" alt="Preview GIF">
 
 <details>
-<summary><h2>TOC</h2></summary>
-
-- [🎞️ Preview](#-preview)
-- [✨ Features](#-features)
-- [🛠️ Prerequisites](#-prerequisites)
-- [🚀 Installation](#-installation)
-- [⚙️ Configuration](#-configuration)
-  - [How to get the API keys?](#how-to-get-the-api-keys)
-- [🎮 Usage](#-usage)
-  - [1. Tweet with Confirmation Message ✅](#1-tweet-with-confirmation-message-)
-  - [2. Tweet without Confirmation Message ❎](#2-tweet-without-confirmation-message-)
-  - [3. View Tweet History 📄](#3-view-tweet-history-)
-  - [4. View Error Logs 📃](#4-view-error-logs-)
-- [🤝 Contributing](#-contributing)
-- [⚠️ Disclaimer](#-disclaimer)
-
+  <summary><h2>TOC</h2></summary>
+  <ul>
+    <li><a href="#preview">🎞️ Preview</a></li>
+    <li><a href="#features">✨ Features</a></li>
+    <li><a href="#prerequisites">🛠️ Prerequisites</a></li>
+    <li><a href="#installation">🚀 Installation</a></li>
+    <li><a href="#configuration">⚙️ Configuration</a></li>
+      <ul>
+        <li><a href="#how-to-get-the-api-keys">How to get the API keys?</a></li>
+      </ul>
+    <li><a href="#usage">🎮 Usage</a></li>
+      <ul>
+        <li><a href="#tweet-confirmation">1. Tweet with Confirmation Message 🔔</a></li>
+        <li><a href="#tweet-no-confirmation">2. Tweet without Confirmation Message ⏩</a></li>
+        <li><a href="#view-tweet-history">3. View Tweet History 📝</a></li>
+        <li><a href="#multiline-tweets">4. Multi Line Tweet 📜</a></li>
+        <li><a href="#view-error-logs">5. View Error Logs ⚠️</a></li>
+      </ul>
+    <li><a href="#contributing">🤝 Contributing</a></li>
+    <li><a href="#disclaimer">⚠️ Disclaimer</a></li>
+  </ul>
 </details>
 
-## ✨ Features
+<h2 id="features">✨ Features</h2>
+<ul>
+  <li>📝 Send text-based tweets from the command line</li>
+  <li>⏲️ Fast, simple and straight-forward</li>
+  <li>🔑 Secure integration with Twitter API</li>
+</ul>
 
-- 📝 Send text-based tweets from the command line
-- ⏲️ Fast, simple and straight-forward
-- 🔑 Secure integration with Twitter API
+<h2 id="prerequisites">🛠️ Prerequisites</h2>
+<ul>
+  <li>🐍 Python 3.6 or higher</li>
+  <li>🐦 Twitter Developer Account and API keys</li>
+</ul>
 
-## 🛠️ Prerequisites
+<h2 id="installation">🚀 Installation</h2>
+<ol>
+  <li>Clone the repository:</li>
 
-- 🐍 Python 3.6 or higher
-- 🐦 Twitter Developer Account and API keys
+  <pre><code>git clone https://github.com/yourusername/tweet-from-console.git
+cd tweet-from-console
+  </code></pre>
 
-## 🚀 Installation
+  <li>Create and activate a virtual environment:</li>
+  <pre><code>python -m venv venv
+source venv/bin/activate  # On Windows, use `venv\Script\activate`
+  </code></pre>
 
-1. Clone the repository:
+  <li>Install the required dependencies:</li>
+  <pre><code>pip install -r requirements.txt</code></pre>
 
-   ```bash
-   git clone https://github.com/yourusername/tweet-from-console.git
-   cd tweet-from-console
-   ```
+  <li>Set up your Twitter API credentials:
+    <ul>
+      <li>Rename <code>scripts/.env.example</code> to <code>scripts/.env</code></li>
+      <li>Open <code>scripts/.env</code> and fill in your Twitter API credentials</li>
+    </ul>
+  </li>
+</ol>
 
-2. Create and activate a virtual environment:
+<h2 id="configuration">⚙️ API key configuration guide</h2>
+<p>Ensure your <code>scripts/.env</code> file contains these Twitter API credentials:</p>
 
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows, use `venv\Script\activate`
-   ```
-
-3. Install the required dependencies:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Set up your Twitter API credentials:
-   - Rename `scripts/.env.example` to `scripts/.env`
-   - Open `scripts/.env` and fill in your Twitter API credentials
-
-### ⚙️ API key configuration guide
-
-Ensure your `scripts/.env` file contains these Twitter API credentials:
-
-```
+<pre><code>
 TWITTER_API_KEY=your_api_key
 TWITTER_API_SECRET_KEY=your_api_secret_key
 TWITTER_ACCESS_TOKEN=your_access_token
 TWITTER_ACCESS_TOKEN_SECRET=your_access_token_secret
-```
+</code></pre>
 
-#### How to get the API keys?
+<h3 id="how-to-get-the-api-keys">How to get the API keys?</h3>
+<p>Following guides would help you get the API keys from Twitter/X Developers Platform:</p>
+<ul>
+  <li><a href="https://developer.x.com/en/docs/authentication/oauth-1-0a/api-key-and-secret">Official Docs</a></li>
+  <li><a href="https://support.tintup.com/hc/en-us/articles/16130285332371-How-to-setup-the-X-API-Key#h_01GZ16761H8YH0M8680FH7KYS0">TintUP Documentation</a></li>
+</ul>
 
-Following guides would help you get the API keys from _Twitter/X Developers Platform_
+<h2 id="usage">🎮 Usage</h2>
+<h3 id="tweet-confirmation">1. Tweet with Confirmation Message 🔔</h3>
+<pre><code>python tweet.py "Your awesome tweet goes here!"</code></pre>
+<p>This will give you a confirmation message like the following:</p>
+<pre><code>You sure you want to post "Your awesome tweet goes here!" ?
+[ (Y)es / (N)o ] :
+Type Here:</code></pre>
 
-- Official Docs : https://developer.x.com/en/docs/authentication/oauth-1-0a/api-key-and-secret
-- TintUP Documentation : https://support.tintup.com/hc/en-us/articles/16130285332371-How-to-setup-the-X-API-Key#h_01GZ16761H8YH0M8680FH7KYS0
-  - Just follow till the "_How to setup the X Integration with TINT_" part
+<h3 id="tweet-no-confirmation">2. Tweet without Confirmation Message ⏩ </h3>
+<pre><code>python tweet.py "Your awesome tweet goes here!" --</code></pre>
+<p>This would not ask for a confirmation message. It directly posts your tweet.</p>
 
-You would need the following credentials in your `.env` file
+<h3 id="view-tweet-history">3. View Tweet History 📝</h3>
+<pre><code>python tweet.py -th <num>
+python tweet.py --tweethistory <num></code></pre>
+<p>Where <code>&lt;num&gt;</code> is the number of recent items to display.</p>
 
-- API Key
-- API Secret Key
-- Access Token
-- Access Token Secret
+<h3 id="multiline-tweets">4. Multi Line Tweet 📜 </h3>
+<pre><code>python tweet.py</code></pre>
+<p>Running this simple code would allow users to send multiline tweets. This is helpful since consoles are usually limited to inline inputs.</p>
 
-## 🎮 Usage
+<p>After writing the tweet, go to new line and then type <code>:q</code> to exit.</p>
 
-### 1. Tweet with Confirmation Message ✅
+<p> <b>Note:</b> If you want to skip the confirmation message, just like <a href="#tweet-confirmation">Usage 1</a>, execute <code>python tweet.py --</code> </p>
 
-To send a tweet, run this command from the project root:
+<p> <b>Note:</b> You can execute multiline tweets in a single line using the <code>\n</code>. The following is an example: </p>
 
-```bash
-python tweet.py "Your awesome tweet goes here! "
-```
+<pre><code>python tweet.py "Line 1 \n Line 2"</code></pre>
 
-This will give you a confirmation message like the following:
+Here is the format of the tweet that would be posted:
 
-```
-You sure you want to post "Your awesome tweet goes here!" ?
- [ (Y)es / (N)o ] :
+<pre><code>Line 1
+Line 2  
+</code></pre>
 
-Type Here:
-```
+<h3 id="view-error-logs">4. View Error Logs ⚠️ </h3>
+<pre><code>python tweet.py -e <num>
+python tweet.py --error <num></code></pre>
 
-And based on your choice the scripts send your tweet.
+<h2 id="contributing">🤝 Contributing</h2>
+<p>Contributions are welcome! Feel free to submit a Pull Request and join our tweeting revolution! 🌟</p>
 
-### 2. Tweet without Confirmation Message ❎
-
-If you want to send the tweet without confirmation, add `--` (or `-y`) as an argument.
-
-```bash
-python tweet.py "Your awesome tweet goes here! " --
-```
-
-This would not ask the confirmation message. It directly post your tweet.
-
-### 3. View Tweet History 📄
-
-You can now view the tweet history with the following command:
-
-```bash
-python tweet.py -th <num>
-```
-
-or
-
-```bash
-python tweet.py --tweethistory <num>
-```
-
-Where `<num>` is the number of recent items to display. For example, if we want to see the recent 5 tweets sent using the script, we can run `python tweet.py -th 5` (or `python tweet.py -tweethistory 5` ). If no `<num>` is mentioned, the script will retrieve first 500 tweet history and display on the screen.
-
-The error logs are located at `logs/tweet_history.txt` inside the repo
-
-### 4. View Error Logs 📃
-
-Since this is a CLI tools, there is always a possiblity for errors depending on the client environment.
-
-Therefore, the errors (if any) faced by this application is automatically logged in your local machine.
-
-To view it, run:
-
-```bash
-python tweet.py -e <num>
-```
-
-or
-
-```bash
-python tweet.py --error <num>
-```
-
-Where `<num>` is the number of recent items to display. For example, if we want to see the recent 5 error messages, we can run `python tweet.py -e 5` (or `python tweet.py --error 5` ). If no `<num>` is mentioned, the script will retrieve first 500 error logs and display on the screen.
-
-The error logs are located at `logs/error.txt` inside the repo
-
-### 4. (Misc) View All Logs 📃
-
-You can view both the above logs at the same time using the following commands:
-
-```bash
-python tweet.py -a <num>
-```
-
-or
-
-```bash
-python tweet.py --all <num>
-```
-
-The error logs are located at `logs/error.txt` inside the repo
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to submit a Pull Request and join our tweeting revolution! 🌟
-
-## ⚠️ Disclaimer
-
-This tool is for educational purposes only. Always comply with Twitter's terms of service and API usage guidelines. Tweet responsibly
+<h2 id="disclaimer">⚠️ Disclaimer</h2>
+<p>This tool is for educational purposes only. Always comply with Twitter's terms of service and API usage guidelines. Tweet responsibly.</p>
