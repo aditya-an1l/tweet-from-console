@@ -50,12 +50,12 @@ def log_error(error_message) -> None:
 def tweet_confirmation_alert(tweet, tweet_log=False) -> None:
     """Returns the just sent tweet in console"""
 
-    confirmation_text = f'The tweet [cyan]{tweet}[/cyan] posted at {datetime.now().strftime("%H:%M:%S %Y-%m-%d")}'
+    confirmation_text = f"The tweet [cyan]{tweet}[/cyan] posted at {datetime.now().strftime('%H:%M:%S %Y-%m-%d')}"
     console.print(confirmation_text)
     if tweet_log:
         with open("".join(log_directory + "/tweet_history.txt"), "a") as file:
             message = (
-                f'\n({datetime.now().strftime("%H:%M:%S %Y-%m-%d")}) {tweet} \n ------'
+                f"\n({datetime.now().strftime('%H:%M:%S %Y-%m-%d')}) {tweet} \n ------"
             )
             file.write(message)
             pass
@@ -84,10 +84,10 @@ def authentication(tweet) -> tweepy.Client:
         sys.exit(1)
 
     try:
-        consumer_key = os.getenv("CONSUMER_KEY")
-        consumer_secret = os.getenv("CONSUMER_SECRET")
-        access_token = os.getenv("ACCESS_TOKEN")
-        access_token_secret = os.getenv("ACCESS_TOKEN_SECRET")
+        consumer_key = os.getenv("TWITTER_API_KEY")
+        consumer_secret = os.getenv("TWITTER_API_SECRET_KEY")
+        access_token = os.getenv("TWITTER_ACCESS_TOKEN")
+        access_token_secret = os.getenv("TWITTER_ACCESS_TOKEN_SECRET")
 
         check_api_keys(
             {
