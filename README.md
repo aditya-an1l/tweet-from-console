@@ -146,7 +146,7 @@ python tweet.py --tweethistory <num></code></pre>
 
 <p> <b>Note:</b> You can execute multiline tweets in a single line using the <code>\n</code>. The following is an example: </p>
 
-<pre><code>python tweet.py "Line 1 \n Line 2"</code></pre>
+<pre><code>python tweet.py "Line 1 \nLine 2"</code></pre>
 
 Here is the format of the tweet that would be posted:
 
