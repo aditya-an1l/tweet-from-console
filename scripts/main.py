@@ -130,7 +130,7 @@ def send_tweet(tweet, skip_confirmation=False, max_limit=280) -> None:
         tweet_confirmation_alert(tweet, tweet_log=True)
     elif not skip_confirmation and characters <= max_limit:
         console.print(
-            f"You sure you want to post : [cyan]{tweet}[/cyan] ?  \n [ characters used: {characters}/ 280 ]"
+            f"You sure you want to post : \n--- \n [cyan]{tweet}[/cyan]  \n\n characters used: [{characters}/ 280] \n---"
         )
         console.print("[green] [ (Y)es / (N)o ] : [/green] ")
         confirmation = input("Type Here: ")
