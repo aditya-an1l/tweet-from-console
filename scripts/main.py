@@ -50,7 +50,7 @@ def log_error(error_message) -> None:
 def tweet_confirmation_alert(tweet, tweet_log=False) -> None:
     """Returns the just sent tweet in console"""
 
-    confirmation_text = f"The tweet [cyan]{tweet}[/cyan] posted at {datetime.now().strftime('%H:%M:%S %Y-%m-%d')}"
+    confirmation_text = f"The tweet \n\n[cyan]{tweet}[/cyan]\n\nhas been posted at {datetime.now().strftime('%H:%M:%S %Y-%m-%d')}"
     console.print(confirmation_text)
     if tweet_log:
         with open("".join(log_directory + "/tweet_history.txt"), "a") as file:
