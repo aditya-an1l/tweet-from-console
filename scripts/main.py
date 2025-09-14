@@ -50,7 +50,7 @@ def log_error(error_message) -> None:
 def tweet_confirmation_alert(tweet, tweet_log=False) -> None:
     """Returns the just sent tweet in console"""
 
-    confirmation_text = f"The tweet [cyan]{tweet}[/cyan] posted at {datetime.now().strftime('%H:%M:%S %Y-%m-%d')}"
+    confirmation_text = f"The tweet \n\n[cyan]{tweet}[/cyan]\n\nhas been posted at {datetime.now().strftime('%H:%M:%S %Y-%m-%d')}"
     console.print(confirmation_text)
     if tweet_log:
         with open("".join(log_directory + "/tweet_history.txt"), "a") as file:
@@ -130,7 +130,7 @@ def send_tweet(tweet, skip_confirmation=False, max_limit=280) -> None:
         tweet_confirmation_alert(tweet, tweet_log=True)
     elif not skip_confirmation and characters <= max_limit:
         console.print(
-            f"You sure you want to post : [cyan]{tweet}[/cyan] ?  \n [ characters used: {characters}/ 280 ]"
+            f"You sure you want to post : \n--- \n[cyan]{tweet}[/cyan]  \n\n characters used: [{characters}/ 280] \n---"
         )
         console.print("[green] [ (Y)es / (N)o ] : [/green] ")
         confirmation = input("Type Here: ")
