@@ -27,17 +27,21 @@ $ python tweet.py -h
 
 """
 
-import sys
+import argparse
 import os
-from typing import Dict, Any, Union
-import requests
+import sys
+from datetime import MAXYEAR, datetime
+from threading import activeCount
+from typing import Any, Dict, Union
 
-import scripts.main as main
+import requests
 from rich import print
 from rich.console import Console
 from rich.table import Table
+
+import scripts.image as image
+import scripts.main as main
 from scripts.github_release import GitHub_Release
-import argparse
 
 console = Console()
 
@@ -115,6 +119,13 @@ def arguments_parser() -> argparse.Namespace:
     )
 
     parser.add_argument("-v", "--version", help="Show version", action="store_true")
+    parser.add_argument(
+        "-c",
+        "--clipboard",
+        help="Post the image in your clipboard as the media",
+        action="store_true",
+        dest="use_clipboard_image",
+    )
     args = parser.parse_args()
 
     return args
@@ -213,7 +224,16 @@ if __name__ == "__main__":
         main.send_tweet(tweet_box_input, skip_confirmation)
     if args.tweet:
         tweet_inline = args.tweet
-        main.send_tweet(tweet_inline.replace("\\n", "\n"), skip_confirmation)
+        if args.use_clipboard_image:
+            file_name = datetime.now().strftime("%Y-%m-%d_%H-%M-%S.png")
+            image.download_from_clipboard(name=file_name)
+            main.send_tweet(
+                tweet_inline.replace("\\n", "\n"),
+                skip_confirmation,
+                image_path=file_name,
+            )
+        else:
+            main.send_tweet(tweet_inline.replace("\\n", "\n"), skip_confirmation)
 
     if args.all:
         items = args.all
