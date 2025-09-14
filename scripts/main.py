@@ -99,6 +99,7 @@ def authentication(tweet):
         consumer_secret = os.getenv("TWITTER_API_SECRET_KEY")
         access_token = os.getenv("TWITTER_ACCESS_TOKEN")
         access_token_secret = os.getenv("TWITTER_ACCESS_TOKEN_SECRET")
+        bearer_token = os.getenv("TWITTER_BEARER_TOKEN")
 
         check_api_keys(
             {
@@ -160,6 +161,7 @@ def send_tweet(tweet, skip_confirmation=False, max_limit=280, image_path=None) -
 
     def _post_with_media(text, media_filepath):
         """Helper function to post text + image"""
+        media_filepath = f"{cwd}/../user_media/{media_filepath}"
         uploaded = api_v1.media_upload(filename=media_filepath)
         media_id = getattr(uploaded, "media_id", None) or getattr(
             uploaded, "media_id_string", None
