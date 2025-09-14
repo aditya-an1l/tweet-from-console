@@ -1,3 +1,10 @@
+"""
+./scripts/main.py
+
+The `main` script that coordinates and execute the major
+functionality of the tweet-from-console application
+"""
+
 from datetime import datetime
 import tweepy
 from rich import print
