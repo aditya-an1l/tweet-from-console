@@ -99,6 +99,7 @@ def authentication(tweet):
         consumer_secret = os.getenv("TWITTER_API_SECRET_KEY")
         access_token = os.getenv("TWITTER_ACCESS_TOKEN")
         access_token_secret = os.getenv("TWITTER_ACCESS_TOKEN_SECRET")
+        # TODO: mention the following in README template
         bearer_token = os.getenv("TWITTER_BEARER_TOKEN")
 
         check_api_keys(
@@ -161,7 +162,10 @@ def send_tweet(tweet, skip_confirmation=False, max_limit=280, image_path=None) -
 
     def _post_with_media(text, media_filepath):
         """Helper function to post text + image"""
-        media_filepath = f"{cwd}/../user_media/{media_filepath}"
+        # media_filepath = f"{cwd}/../user_media/{media_filepath}"
+        media_filepath = os.path.abspath(
+            os.path.join(cwd, "..", "user_media", media_filepath)
+        )
         uploaded = api_v1.media_upload(filename=media_filepath)
         media_id = getattr(uploaded, "media_id", None) or getattr(
             uploaded, "media_id_string", None
@@ -203,3 +207,10 @@ def send_tweet(tweet, skip_confirmation=False, max_limit=280, image_path=None) -
             sys.exit(1)
         else:
             print("\n [red]Invalid Input [/red] \n")
+
+
+# send_tweet(
+#     "Testing this out",
+#     skip_confirmation=True,
+#     image_path=f"{cwd}/../user_media/2025-09-14_12-11-26.png",
+# )
