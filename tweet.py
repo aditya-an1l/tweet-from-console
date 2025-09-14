@@ -85,7 +85,7 @@ def info_table() -> None:
 def arguments_parser() -> argparse.Namespace:
     """Parses the CMD arguments"""
     parser = argparse.ArgumentParser(
-        description="Send Tweets directly from the console and terminal."
+        description="Send Tweets directly from your terminal."
     )
     parser.add_argument(
         "tweet",
