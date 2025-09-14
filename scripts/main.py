@@ -82,8 +82,12 @@ def check_api_keys(keys) -> None:
         raise ValueError(error_message)
 
 
-def authentication(tweet) -> tweepy.Client:
-    """Assign and authenticate key"""
+def authentication(tweet):
+    """Assign and authenticate keys and return (api_v1, client_v2)
+
+    - api_v1: tweepy.API (v1.1) for media uploads (media_upload)
+    - client_v2: tweepy.Client (v2) for create_tweet()
+    """
     if not tweet.strip():
         console.print(
             "[red]ERROR: Tweet cannot be empty. It needs texts. Try again...[/red] \n Exiting..."
@@ -108,23 +112,40 @@ def authentication(tweet) -> tweepy.Client:
         print("ERROR: Value error")
         sys.exit(1)
 
-    # Authentication
-    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-    auth.set_access_token(access_token, access_token_secret)
+    try:
+        auth1 = tweepy.OAuth1UserHandler(
+            consumer_key, consumer_secret, access_token, access_token_secret
+        )
+    except Exception:
+        auth1 = tweepy.OAuthHandler(consumer_key, consumer_secret)
+        auth1.set_access_token(access_token, access_token_secret)
 
-    client = tweepy.Client(
-        consumer_key=consumer_key,
-        consumer_secret=consumer_secret,
-        access_token=access_token,
-        access_token_secret=access_token_secret,
-    )
+    api_v1 = tweepy.API(auth1, wait_on_rate_limit=True)
 
-    return client
+    try:
+        client_v2 = tweepy.Client(
+            bearer_token=bearer_token,
+            consumer_key=consumer_key,
+            consumer_secret=consumer_secret,
+            access_token=access_token,
+            access_token_secret=access_token_secret,
+            wait_on_rate_limit=True,
+        )
+    except Exception:
+        client_v2 = tweepy.Client(
+            consumer_key=consumer_key,
+            consumer_secret=consumer_secret,
+            access_token=access_token,
+            access_token_secret=access_token_secret,
+            wait_on_rate_limit=True,
+        )
+
+    return api_v1, client_v2
 
 
-def send_tweet(tweet, skip_confirmation=False, max_limit=280) -> None:
-    """Send the Tweet"""
-    client = authentication(tweet)
+def send_tweet(tweet, skip_confirmation=False, max_limit=280, image_path=None) -> None:
+    """Send the Tweet using v1.1 for media upload and v2 for create_tweet"""
+    api_v1, client_v2 = authentication(tweet)
     characters = len(tweet)
     if characters > max_limit:
         console.print(
@@ -132,9 +153,32 @@ def send_tweet(tweet, skip_confirmation=False, max_limit=280) -> None:
         )
         console.print("Exiting...")
         sys.exit(1)
+
+    def _post_text_only(text):
+        """Helper function to post text"""
+        return client_v2.create_tweet(text=text)
+
+    def _post_with_media(text, media_filepath):
+        """Helper function to post text + image"""
+        uploaded = api_v1.media_upload(filename=media_filepath)
+        media_id = getattr(uploaded, "media_id", None) or getattr(
+            uploaded, "media_id_string", None
+        )
+        if not media_id:
+            raise RuntimeError("Failed to obtain media_id from media_upload()")
+        return client_v2.create_tweet(text=text, media_ids=[str(media_id)])
+
     if skip_confirmation and characters <= max_limit:
-        client.create_tweet(text=tweet)
-        tweet_confirmation_alert(tweet, tweet_log=True)
+        try:
+            if image_path is None:
+                _post_text_only(tweet)
+            else:
+                _post_with_media(tweet, image_path)
+            tweet_confirmation_alert(tweet, tweet_log=True)
+        except Exception as e:
+            log_error(f"[red]Failed to post tweet: {e}[/red]")
+            raise
+
     elif not skip_confirmation and characters <= max_limit:
         console.print(
             f"You sure you want to post : \n--- \n[cyan]{tweet}[/cyan]  \n\n characters used: [{characters}/ 280] \n---"
@@ -142,9 +186,16 @@ def send_tweet(tweet, skip_confirmation=False, max_limit=280) -> None:
         console.print("[green] [ (Y)es / (N)o ] : [/green] ")
         confirmation = input("Type Here: ")
         if confirmation.strip() in ("Y", "y", "yes", "YES", "Yes"):
-            client.create_tweet(text=tweet)
-            tweet_confirmation_alert(tweet, tweet_log=True)
-            sys.exit(1)
+            try:
+                if image_path is None:
+                    _post_text_only(tweet)
+                else:
+                    _post_with_media(tweet, image_path)
+                tweet_confirmation_alert(tweet, tweet_log=True)
+                sys.exit(1)
+            except Exception as e:
+                log_error(f"[red]Failed to post tweet: {e}[/red]")
+                raise
         elif confirmation.strip() in ("N", "n", "no", "NO", "No"):
             print("Exiting...")
             sys.exit(1)
