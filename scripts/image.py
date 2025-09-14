@@ -4,12 +4,27 @@ from rich.console import Console
 from rich.table import Table
 import requests
 from urllib.parse import urlparse
+from datetime import datetime
 
 console = Console()
 
 script_path = os.path.abspath(__file__)
 cwd = os.path.dirname(script_path)
 log_directory = os.path.abspath(os.path.join(cwd, "logs"))
+
+
+def download_from_clipboard(path="./user_media/", name=None):
+    from PIL import ImageGrab
+
+    im = ImageGrab.grabclipboard()
+    if im is None:
+        raise ValueError("No image found in clipboard!")
+
+    os.makedirs(path, exist_ok=True)
+    name = datetime.now().strftime("%Y-%m-%d_%H-%M-%S.png") if name is None else name
+    save_path = os.path.join(path, name)
+    im.save(save_path)
+    return save_path
 
 
 def is_imgur_url(url):
@@ -48,6 +63,3 @@ def download_imgur_image(url, output_dir="./user_media/"):
         print(f"Image downloaded successfully: {output_path}")
     except Exception as e:
         print(f"Error: {e}")
-
-
-download_imgur_image("https://imgur.com/tdvjX6c", "./user_media/")
