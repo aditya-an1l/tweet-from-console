@@ -1,5 +1,8 @@
-import requests
 import os
+from rich import print
+from rich.console import Console
+from rich.table import Table
+import requests
 
 console = Console()
 
