@@ -12,8 +12,10 @@ script_path = os.path.abspath(__file__)
 cwd = os.path.dirname(script_path)
 log_directory = os.path.abspath(os.path.join(cwd, "logs"))
 
+USER_MEDIA_PATH = os.path.abspath(os.path.join(cwd, "..", "user_media"))
 
-def download_from_clipboard(path="./user_media/", name=None):
+
+def download_from_clipboard(path=USER_MEDIA_PATH, name=None):
     from PIL import ImageGrab
 
     im = ImageGrab.grabclipboard()
@@ -32,7 +34,7 @@ def is_imgur_url(url):
     return parts.netloc in ("i.imgur.com", "imgur.com")
 
 
-def download_imgur_image(url, output_dir="./user_media/"):
+def download_imgur_image(url, output_dir=USER_MEDIA_PATH):
     try:
         if not is_imgur_url(url):
             raise ValueError(
