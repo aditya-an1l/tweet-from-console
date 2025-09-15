@@ -6,8 +6,8 @@ Author: aditya-an1l (https://github.com/aditya-an1l)
 Email: aditya.anil.productions@gmail.com
 
 Licence: Apache 2.0 Licence
-Version: v1.2.1
-Release Name: Text and Metadata Version
+Version: v1.3.1
+Release Name: Image Support Version
 
 In order to run the program, follow the README.md and enter your
 Twitter API Key in a dot env file under scripts directory (instructions
