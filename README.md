@@ -1,8 +1,11 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/aditya-an1l/tweet-from-console/main/media/Logo.jfif" width="200" height="200" alt="Logo">
-  <h1><b>Tweet - From - Console</b></h1>
+  <h1><b><i>Tweet - From - Console</i> </b></h1>
 </div>
 
+<div align="center">
+  <h2><b> 🐦 Send X / Tweets right from your terminal 🐦</b></h2>
+</div>
 <div align="center">
   <p>
     <a href="https://github.com/aditya-an1l/tweet-from-console/releases/latest">
@@ -29,47 +32,96 @@
   </p>
 </div>
 
-<br> 
-<div align="center">
-  <h2><b> 🐦 Send tweets right from your terminal. No browser needed!</b></h2>
-</div>
+<br>
 
-<p>Tweet from Console is a Python-based command-line tool that lets you tweet directly from your console, command prompt, or terminal. Say goodbye to distracting web interfaces.</p>
+<p>Tweet from Console is a Python-based command-line tool that lets you tweet directly from your terminal. Say goodbye to distracting web interfaces.</p>
 
 <p>Good for programmers and devs who want to send tweets without leaving their console.</p>
 
-<h2 id="preview">🎞️ Preview</h2>
-<img src="https://github.com/aditya-an1l/tweet-from-console/blob/main/media/Walkthrough.gif" alt="Preview GIF">
+**_Happy Distraction Free Tweeting 🧑‍💻_**
 
-<details>
-  <summary><h2>TOC</h2></summary>
-  <ul>
-    <li><a href="#preview">🎞️ Preview</a></li>
-    <li><a href="#features">✨ Features</a></li>
-    <li><a href="#prerequisites">🛠️ Prerequisites</a></li>
-    <li><a href="#installation">🚀 Installation</a></li>
-    <li><a href="#configuration">⚙️ Configuration</a></li>
-      <ul>
-        <li><a href="#how-to-get-the-api-keys">How to get the API keys?</a></li>
-      </ul>
-    <li><a href="#usage">🎮 Usage</a></li>
-      <ul>
-        <li><a href="#tweet-confirmation">1. Tweet with Confirmation Message 🔔</a></li>
-        <li><a href="#tweet-no-confirmation">2. Tweet without Confirmation Message ⏩</a></li>
-        <li><a href="#view-tweet-history">3. View Tweet History 📝</a></li>
-        <li><a href="#multiline-tweets">4. Multi Line Tweet 📜</a></li>
-        <li><a href="#view-error-logs">5. View Error Logs ⚠️</a></li>
-      </ul>
-    <li><a href="#contributing">🤝 Contributing</a></li>
-    <li><a href="#disclaimer">⚠️ Disclaimer</a></li>
-  </ul>
-</details>
+<br>
+
+<h2 id="preview">🎞️ Preview</h2>
+<h3 id="tweet-confirmation">1. Tweet with Confirmation Message 🔔</h3>
+
+<img src="https://github.com/aditya-an1l/tweet-from-console/blob/main/media/normal.gif" alt="without confirmation">
+
+<pre><code>python tweet.py "Your awesome tweet goes here!"</code></pre>
+<p>This will give you a confirmation message like the following:</p>
+<pre><code>You sure you want to post "Your awesome tweet goes here!" ?
+[ (Y)es / (N)o ] :
+Type Here:</code></pre>
+
+<h3 id="tweet-confirmation">2. Tweet with Image (NEW) 🔔</h3>
+
+<img src="https://github.com/aditya-an1l/tweet-from-console/blob/main/media/image.gif" alt="with image">
+
+Images can now be posted on X/Twitter straight from your clipboard. For this, use `-c` flag.
+
+<pre><code>python tweet.py "Your awesome tweet goes here!" -c</code></pre>
+
+<p>This will give you a confirmation message like the following:</p>
+<pre><code>You sure you want to post :
+----
+Your awesome tweet goes here!
+<br>
+
+[Image from Clipboard]
+characters used: [4/ 280]
+\----
+[ (Y)es / (N)o ] :  
+Type Here: </code></pre>
+
+The images would be stored in the `/user_media/` directory.
+
+<h3 id="tweet-no-confirmation">3. Tweet without Confirmation Message ⏩ </h3>
+
+<img src="https://github.com/aditya-an1l/tweet-from-console/blob/main/media/without conf.gif" alt="without confirmation">
+
+<pre><code>python tweet.py "Your awesome tweet goes here!" --</code></pre>
+<p>This would not ask for a confirmation message. It directly posts your tweet.</p>
+
+<h3 id="view-tweet-history">4. View Tweet History 📝</h3>
+
+<img src="https://github.com/aditya-an1l/tweet-from-console/blob/main/media/th.gif" alt="tweet history">
+
+<pre><code>python tweet.py -th <num>
+python tweet.py --tweethistory <num></code></pre>
+
+<h3 id="multiline-tweets">5. Multi Line Tweet 📜 </h3>
+
+<img src="https://github.com/aditya-an1l/tweet-from-console/blob/main/media/mullti.gif" alt="multiline">
+
+<pre><code>python tweet.py</code></pre>
+<p>Running this simple code would allow users to send multiline tweets. This is helpful since consoles are usually limited to inline inputs.</p>
+
+<p>After writing the tweet, go to new line and then type <code>:q</code> to exit.</p>
+
+<p> <b>Note:</b> If you want to skip the confirmation message, just like <a href="#tweet-confirmation">Usage 1</a>, execute <code>python tweet.py --</code> </p>
+
+<p> <b>Note:</b> You can execute multiline tweets in a single line using the <code>\n</code>. The following is an example: </p>
+
+<img src="https://github.com/aditya-an1l/tweet-from-console/blob/main/media/inline multiline.gif" alt="inline multiline">
+
+<pre><code>python tweet.py "Line 1 \nLine 2"</code></pre>
+
+Here is the format of the tweet that would be posted:
+
+<pre><code>Line 1
+Line 2  
+</code></pre>
+
+<h3 id="view-error-logs">6. View Error Logs ⚠️ </h3>
+<pre><code>python tweet.py -e <num>
+python tweet.py --error <num></code></pre>
 
 <h2 id="features">✨ Features</h2>
 <ul>
   <li>📝 Send text-based tweets from the command line</li>
   <li>⏲️ Fast, simple and straight-forward</li>
   <li>🔑 Secure integration with Twitter API</li>
+<li>🖼️ Image upload option from Clipboard</li>
 </ul>
 
 <h2 id="prerequisites">🛠️ Prerequisites</h2>
@@ -102,6 +154,56 @@ source venv/bin/activate  # On Windows, use `venv\Script\activate`
   </li>
 </ol>
 
+5. (Optional but Highly Recommended) Create aliases for quick access of `tweet.py`
+
+i. **Bash**
+
+Add this line to `~/.bashrc`:
+
+`alias  tw='python /path/to/tweet.py'`
+
+- Reload with: `source ~/.bashrc`
+- Usage: `tw [arguments]`
+  ii. **Zsh**
+
+Insert the same line in `~/.zshrc`:
+
+`alias tw='python /path/to/tweet.py'`
+
+- Reload with: `source ~/.zshrc`
+- Usage: `tw [arguments]`
+
+3. **Fish**
+
+Add this line to `~/.config/fish/config.fish`:
+
+`alias tw='python /path/to/tweet.py'`
+
+- To persist, use: `alias --save tw='python /path/to/tweet.py'`
+- Or, create a function for full argument support:
+
+  `function tw
+    python /path/to/tweet.py $argv
+end
+funcsave tw`
+
+- Usage: `tw [arguments]`
+
+4. **PowerShell**
+
+Define a function in your profile (`$PROFILE`, usually at `Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1`):
+
+`function tw { python C:\path\to\tweet.py @args }`
+
+- Reload profile or restart PowerShell.
+- Usage: `tw [arguments]`jdatascientist
+
+#### Additional Notes
+
+- Replace `/path/to/tweet.py` (Linux/macOS) or `C:\path\to\tweet.py` (Windows) with the actual script path.
+- These methods support command-line arguments and work for most CLI Python apps
+- Aliases only persist after reloading the config file or opening a new terminal session
+
 <h2 id="configuration">⚙️ API key configuration guide</h2>
 <p>Ensure your <code>scripts/.env</code> file contains these Twitter API credentials:</p>
 
@@ -118,45 +220,6 @@ TWITTER_ACCESS_TOKEN_SECRET=your_access_token_secret
   <li><a href="https://developer.x.com/en/docs/authentication/oauth-1-0a/api-key-and-secret">Official Docs</a></li>
   <li><a href="https://support.tintup.com/hc/en-us/articles/16130285332371-How-to-setup-the-X-API-Key#h_01GZ16761H8YH0M8680FH7KYS0">TintUP Documentation</a></li>
 </ul>
-
-<h2 id="usage">🎮 Usage</h2>
-<h3 id="tweet-confirmation">1. Tweet with Confirmation Message 🔔</h3>
-<pre><code>python tweet.py "Your awesome tweet goes here!"</code></pre>
-<p>This will give you a confirmation message like the following:</p>
-<pre><code>You sure you want to post "Your awesome tweet goes here!" ?
-[ (Y)es / (N)o ] :
-Type Here:</code></pre>
-
-<h3 id="tweet-no-confirmation">2. Tweet without Confirmation Message ⏩ </h3>
-<pre><code>python tweet.py "Your awesome tweet goes here!" --</code></pre>
-<p>This would not ask for a confirmation message. It directly posts your tweet.</p>
-
-<h3 id="view-tweet-history">3. View Tweet History 📝</h3>
-<pre><code>python tweet.py -th <num>
-python tweet.py --tweethistory <num></code></pre>
-<p>Where <code>&lt;num&gt;</code> is the number of recent items to display.</p>
-
-<h3 id="multiline-tweets">4. Multi Line Tweet 📜 </h3>
-<pre><code>python tweet.py</code></pre>
-<p>Running this simple code would allow users to send multiline tweets. This is helpful since consoles are usually limited to inline inputs.</p>
-
-<p>After writing the tweet, go to new line and then type <code>:q</code> to exit.</p>
-
-<p> <b>Note:</b> If you want to skip the confirmation message, just like <a href="#tweet-confirmation">Usage 1</a>, execute <code>python tweet.py --</code> </p>
-
-<p> <b>Note:</b> You can execute multiline tweets in a single line using the <code>\n</code>. The following is an example: </p>
-
-<pre><code>python tweet.py "Line 1 \nLine 2"</code></pre>
-
-Here is the format of the tweet that would be posted:
-
-<pre><code>Line 1
-Line 2  
-</code></pre>
-
-<h3 id="view-error-logs">4. View Error Logs ⚠️ </h3>
-<pre><code>python tweet.py -e <num>
-python tweet.py --error <num></code></pre>
 
 <h2 id="contributing">🤝 Contributing</h2>
 <p>Contributions are welcome! Feel free to submit a Pull Request and join our tweeting revolution! 🌟</p>

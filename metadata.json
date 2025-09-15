@@ -1,7 +1,7 @@
 {
   "name": "tweet-from-console",
-  "version": "1.2.1",
-  "release title": "Text and Metadata Version",
+  "version": "1.3.1-alpha",
+  "release title": "Image Support Version",
   "description": "Send tweets right from your terminal",
   "url": "https://github.com/aditya-an1l/tweet-from-console",
   "author": {

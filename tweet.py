@@ -6,8 +6,8 @@ Author: aditya-an1l (https://github.com/aditya-an1l)
 Email: aditya.anil.productions@gmail.com
 
 Licence: Apache 2.0 Licence
-Version: v1.2.1
-Release Name: Text and Metadata Version
+Version: v1.3.1-alpha
+Release Name: Image Support Version
 
 In order to run the program, follow the README.md and enter your
 Twitter API Key in a dot env file under scripts directory (instructions
@@ -27,17 +27,21 @@ $ python tweet.py -h
 
 """
 
-import sys
+import argparse
 import os
-from typing import Dict, Any, Union
-import requests
+import sys
+from datetime import MAXYEAR, datetime
+from threading import activeCount
+from typing import Any, Dict, Union
 
-import scripts.main as main
+import requests
 from rich import print
 from rich.console import Console
 from rich.table import Table
+
+import scripts.image as image
+import scripts.main as main
 from scripts.github_release import GitHub_Release
-import argparse
 
 console = Console()
 
@@ -85,7 +89,7 @@ def info_table() -> None:
 def arguments_parser() -> argparse.Namespace:
     """Parses the CMD arguments"""
     parser = argparse.ArgumentParser(
-        description="Send Tweets directly from the console and terminal."
+        description="Send Tweets directly from your terminal."
     )
     parser.add_argument(
         "tweet",
@@ -115,6 +119,13 @@ def arguments_parser() -> argparse.Namespace:
     )
 
     parser.add_argument("-v", "--version", help="Show version", action="store_true")
+    parser.add_argument(
+        "-c",
+        "--clipboard",
+        help="Post the image in your clipboard as the media",
+        action="store_true",
+        dest="use_clipboard_image",
+    )
     args = parser.parse_args()
 
     return args
@@ -213,7 +224,16 @@ if __name__ == "__main__":
         main.send_tweet(tweet_box_input, skip_confirmation)
     if args.tweet:
         tweet_inline = args.tweet
-        main.send_tweet(tweet_inline.replace("\\n", "\n"), skip_confirmation)
+        if args.use_clipboard_image:
+            file_name = datetime.now().strftime("%Y-%m-%d_%H-%M-%S.png")
+            image.download_from_clipboard(name=file_name)
+            main.send_tweet(
+                tweet_inline.replace("\\n", "\n"),
+                skip_confirmation,
+                image_path=file_name,
+            )
+        else:
+            main.send_tweet(tweet_inline.replace("\\n", "\n"), skip_confirmation)
 
     if args.all:
         items = args.all
