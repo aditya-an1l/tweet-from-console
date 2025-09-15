@@ -164,7 +164,9 @@ Add this line to `~/.bashrc`:
 
 - Reload with: `source ~/.bashrc`
 - Usage: `tw [arguments]`
-  ii. **Zsh**
+  
+
+ii. **Zsh**
 
 Insert the same line in `~/.zshrc`:
 
@@ -173,7 +175,7 @@ Insert the same line in `~/.zshrc`:
 - Reload with: `source ~/.zshrc`
 - Usage: `tw [arguments]`
 
-3. **Fish**
+iii. **Fish**
 
 Add this line to `~/.config/fish/config.fish`:
 
@@ -189,7 +191,7 @@ funcsave tw`
 
 - Usage: `tw [arguments]`
 
-4. **PowerShell**
+iv. **PowerShell**
 
 Define a function in your profile (`$PROFILE`, usually at `Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1`):
 
