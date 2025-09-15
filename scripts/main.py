@@ -19,6 +19,7 @@ script_path = os.path.abspath(__file__)
 cwd = os.path.dirname(script_path)
 log_directory = os.path.abspath(os.path.join(cwd, "..", "logs"))
 logger = logging.getLogger("ErrorLogging")
+USER_MEDIA_PATH = os.path.abspath(os.path.join(cwd, "..", "user_media"))
 
 console = Console()
 
@@ -54,10 +55,10 @@ def log_error(error_message) -> None:
     )
 
 
-def tweet_confirmation_alert(tweet, tweet_log=False) -> None:
+def tweet_confirmation_alert(tweet, tweet_log=False, hasImage=False) -> None:
     """Returns the just sent tweet in console"""
 
-    confirmation_text = f"The tweet \n\n[cyan]{tweet}[/cyan]\n\nhas been posted at {datetime.now().strftime('%H:%M:%S %Y-%m-%d')}"
+    confirmation_text = f"The tweet \n\n[cyan]{tweet}[/cyan]\n\n{'' if not hasImage else '[ clipboard image ]'}\nhas been posted at {datetime.now().strftime('%H:%M:%S %Y-%m-%d')}"
     console.print(confirmation_text)
     if tweet_log:
         with open("".join(log_directory + "/tweet_history.txt"), "a") as file:
@@ -178,16 +179,17 @@ def send_tweet(tweet, skip_confirmation=False, max_limit=280, image_path=None) -
         try:
             if image_path is None:
                 _post_text_only(tweet)
+                tweet_confirmation_alert(tweet, tweet_log=True, hasImage=False)
             else:
                 _post_with_media(tweet, image_path)
-            tweet_confirmation_alert(tweet, tweet_log=True)
+                tweet_confirmation_alert(tweet, tweet_log=True, hasImage=True)
         except Exception as e:
             log_error(f"[red]Failed to post tweet: {e}[/red]")
             raise
 
     elif not skip_confirmation and characters <= max_limit:
         console.print(
-            f"You sure you want to post : \n--- \n[cyan]{tweet}[/cyan]  \n\n characters used: [{characters}/ 280] \n---"
+            f"You sure you want to post : \n--- \n[cyan]{tweet}[/cyan] \n\n[green]{'' if not image_path else '[Image from Clipboard]'}[/green]  \n characters used: [{characters}/ 280] \n---"
         )
         console.print("[green] [ (Y)es / (N)o ] : [/green] ")
         confirmation = input("Type Here: ")
@@ -195,9 +197,10 @@ def send_tweet(tweet, skip_confirmation=False, max_limit=280, image_path=None) -
             try:
                 if image_path is None:
                     _post_text_only(tweet)
+                    tweet_confirmation_alert(tweet, tweet_log=True, hasImage=False)
                 else:
                     _post_with_media(tweet, image_path)
-                tweet_confirmation_alert(tweet, tweet_log=True)
+                    tweet_confirmation_alert(tweet, tweet_log=True, hasImage=True)
                 sys.exit(1)
             except Exception as e:
                 log_error(f"[red]Failed to post tweet: {e}[/red]")
