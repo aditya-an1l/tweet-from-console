@@ -154,7 +154,7 @@ source venv/bin/activate  # On Windows, use `venv\Script\activate`
   </li>
 </ol>
 
-5. (Optional but Highly Recommended) Create aliases for quick access of `tweet.py`
+5. (Optional but Highly Recommended) Create aliases in your terminal configuration for quick access of `tweet.py`. Following are configurations for some popular shells: 
 
 i. **Bash**
 
