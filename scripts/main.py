@@ -40,7 +40,6 @@ logging.basicConfig(
     ],
 )
 
-
 def log_error(error_message) -> None:
     """logs the error message in a file"""
 
@@ -53,7 +52,6 @@ def log_error(error_message) -> None:
         f"\n Log History stored in [cyan]error.txt[/cyan] at [cyan]{log_directory}[/cyan] \n",
         justify="center",
     )
-
 
 def tweet_confirmation_alert(tweet, tweet_log=False, hasImage=False) -> None:
     """Returns the just sent tweet in console"""
@@ -72,7 +70,6 @@ def tweet_confirmation_alert(tweet, tweet_log=False, hasImage=False) -> None:
             justify="center",
         )
 
-
 def check_api_keys(keys) -> None:
     """check if API keys are missing"""
 
@@ -81,7 +78,6 @@ def check_api_keys(keys) -> None:
         error_message = f" [red] Missing Keys: {', '.join(missing_keys)} [/red]. Try checking the .env file in {log_directory}"
         log_error(error_message)
         raise ValueError(error_message)
-
 
 def authentication(tweet):
     """Assign and authenticate keys and return (api_v1, client_v2)
@@ -210,7 +206,6 @@ def send_tweet(tweet, skip_confirmation=False, max_limit=280, image_path=None) -
             sys.exit(1)
         else:
             print("\n [red]Invalid Input [/red] \n")
-
 
 # send_tweet(
 #     "Testing this out",

@@ -14,7 +14,6 @@ log_directory = os.path.abspath(os.path.join(cwd, "logs"))
 
 USER_MEDIA_PATH = os.path.abspath(os.path.join(cwd, "..", "user_media"))
 
-
 def download_from_clipboard(path=USER_MEDIA_PATH, name=None):
     from PIL import ImageGrab
 
@@ -28,11 +27,9 @@ def download_from_clipboard(path=USER_MEDIA_PATH, name=None):
     im.save(save_path)
     return save_path
 
-
 def is_imgur_url(url):
     parts = urlparse(url)
     return parts.netloc in ("i.imgur.com", "imgur.com")
-
 
 def download_imgur_image(url, output_dir=USER_MEDIA_PATH):
     try:
@@ -40,7 +37,6 @@ def download_imgur_image(url, output_dir=USER_MEDIA_PATH):
             raise ValueError(
                 "Invalid Imgur URL. Must start with https://i.imgur.com/ or https://imgur.com/"
             )
-
         image_name = url.split("/")[-1]
         final_url = f"https://i.imgur.com/{image_name}.png"
 
